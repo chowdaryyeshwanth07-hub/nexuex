@@ -1,0 +1,11 @@
+id,name,category,latitude,longitude,description
+1,VIT Chennai,Education,12.8406,80.1534,Vandalur-Kelambakkam Road campus
+2,Chennai International Airport,Airport,12.9941,80.1709,Major domestic and international air hub
+3,Tambaram Hub,Transit,12.9249,80.1000,Major southern suburban rail and bus interchange
+4,Guindy Metro & Station,Transit,13.0067,80.2025,Key multimodal interchange connecting Blue Line Metro
+5,OMR Sholinganallur,IT Corridor,12.9010,80.2279,Major tech corridor hub with heavy peak traffic
+6,ECR Thiruvanmiyur,Coastal Arterial,12.9830,80.2594,Scenic coastal arterial connecting southern suburbs
+7,Mount Road (Anna Salai),Commercial,13.0305,80.2337,Historic central arterial connecting north and south Chennai
+8,Chennai Central,Transit,13.0827,80.2707,Primary intercity railway terminus and metro intersection
+9,Velachery Hub,Transit,12.9756,80.2207,Suburban residential and IT commercial zone
+10,Koyambedu CMBT,Transit,13.0694,80.1948,Interstate bus terminus and Green Line metro junction

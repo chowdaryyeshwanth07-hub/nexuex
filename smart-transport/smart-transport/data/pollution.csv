@@ -1,0 +1,11 @@
+id,location,aqi,pm25,pm10,primary_pollutant,status,latitude,longitude,updated_at
+1,OMR Sholinganallur,165,82,143,PM2.5,Unhealthy,12.9010,80.2279,2026-08-19 10:30
+2,Chennai Airport Corridor,142,65,118,PM10,Unhealthy for sensitive groups,12.9941,80.1709,2026-08-19 10:30
+3,Tambaram Junction,125,58,95,PM2.5,Unhealthy for sensitive groups,12.9249,80.1000,2026-08-19 10:30
+4,Mount Road (Anna Salai),178,91,162,PM2.5,Unhealthy,13.0305,80.2337,2026-08-19 10:30
+5,ECR Thiruvanmiyur (Coastal),48,18,35,O3,Good,12.9830,80.2594,2026-08-19 10:30
+6,Guindy Industrial Zone,156,76,138,PM2.5,Unhealthy,13.0067,80.2025,2026-08-19 10:30
+7,VIT Chennai & Vandalur Greenbelt,62,28,48,PM10,Moderate,12.8406,80.1534,2026-08-19 10:30
+8,Velachery Residential Zone,92,42,68,PM2.5,Moderate,12.9756,80.2207,2026-08-19 10:30
+9,Chennai Central Station Area,185,98,175,PM2.5,Unhealthy,13.0827,80.2707,2026-08-19 10:30
+10,Koyambedu Commercial,150,71,126,PM10,Unhealthy for sensitive groups,13.0694,80.1948,2026-08-19 10:30

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Transportation Ecosystem | Intelligent Multi-Modal Transit</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <!-- Application Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo-icon">🚦</span>
+            <span>Smart Transport</span>
+            <span class="nav-tagline">Intelligent Ecosystem</span>
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-link active">Commuter Hub</a>
+            <a href="/admin.html" class="nav-link">Admin Dashboard</a>
+            <button id="btn-open-incident-modal" class="btn-secondary" style="font-size:0.82rem; padding: 0.35rem 0.75rem;">
+                ⚠️ Report Incident
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="main-container">
+
+        <!-- Live KPI Stats Banner -->
+        <section class="stats-banner">
+            <div class="stat-card">
+                <div class="stat-icon-wrap" style="color: #ef4444;">🚦</div>
+                <div class="stat-content">
+                    <div class="stat-label">City Traffic Index</div>
+                    <div class="stat-value" id="stat-traffic">72%</div>
+                    <span class="stat-badge badge-high" id="stat-traffic-badge">High Congestion</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon-wrap" style="color: #f59e0b;">🌫️</div>
+                <div class="stat-content">
+                    <div class="stat-label">Average Air Quality</div>
+                    <div class="stat-value" id="stat-aqi">142</div>
+                    <span class="stat-badge badge-high" id="stat-aqi-badge">Unhealthy for Sensitive</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon-wrap" style="color: #06b6d4;">🅿️</div>
+                <div class="stat-content">
+                    <div class="stat-label">Smart Parking Slots</div>
+                    <div class="stat-value" id="stat-parking">425</div>
+                    <span class="stat-badge badge-good" id="stat-parking-badge">38% Available</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon-wrap" style="color: #3b82f6;">🚌</div>
+                <div class="stat-content">
+                    <div class="stat-label">Active Transit Fleet</div>
+                    <div class="stat-value" id="stat-buses">10</div>
+                    <span class="stat-badge badge-good" id="stat-buses-badge">Tracked Live</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-grid">
+
+            <!-- Left Column: Journey Planner & Preference Controls -->
+            <aside class="planner-panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <span>🗺️</span>
+                        <span>Smart Journey Planner</span>
+                    </div>
+                    <span style="font-size: 0.75rem; color: #34d399; font-weight:600; background:rgba(16,185,129,0.15); padding:2px 8px; border-radius:12px;">AI Optimized</span>
+                </div>
+
+                <form id="journey-planner-form">
+                    <div class="form-group">
+                        <label class="form-label">📍 Origin / Starting Point</label>
+                        <select id="select-origin" class="form-select">
+                            <option value="VIT Chennai">VIT Chennai (Education Hub)</option>
+                            <option value="Tambaram Hub">Tambaram Hub (Suburban Rail)</option>
+                            <option value="OMR Sholinganallur">OMR Sholinganallur (IT Corridor)</option>
+                            <option value="ECR Thiruvanmiyur">ECR Thiruvanmiyur (Coastal)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">🏁 Destination</label>
+                        <select id="select-destination" class="form-select">
+                            <option value="Chennai International Airport">Chennai International Airport (Air Hub)</option>
+                            <option value="Guindy Metro & Station">Guindy Metro & Station</option>
+                            <option value="Chennai Central">Chennai Central (Intercity Hub)</option>
+                            <option value="Velachery Hub">Velachery Hub (MRTS)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">⚖️ Optimization Strategy</label>
+                        <div class="preference-tabs">
+                            <button type="button" class="pref-tab" data-pref="Fastest">⚡ Fastest</button>
+                            <button type="button" class="pref-tab" data-pref="Cheapest">💰 Cheapest</button>
+                            <button type="button" class="pref-tab" data-pref="Greenest">🌱 Greenest</button>
+                            <button type="button" class="pref-tab active" data-pref="Balanced">⚖️ Balanced</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btn-calculate-route" class="btn-search">
+                        <span>🚀 Calculate Smart Route</span>
+                    </button>
+                </form>
+
+                <!-- Live Corridor Congestion Feed -->
+                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                    <div style="font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; display:flex; justify-content:space-between; align-items:center;">
+                        <span>🚦 Monitored Road Corridors</span>
+                        <span style="font-size: 0.72rem; color: var(--text-muted);">Real-time</span>
+                    </div>
+                    <div id="traffic-roads-list" style="max-height: 190px; overflow-y: auto;">
+                        <!-- Injected via traffic.js -->
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Column: Interactive Map & Results -->
+            <section class="map-panel">
+                <div class="map-header">
+                    <div style="font-size: 0.95rem; font-weight: 700; color: #fff; display:flex; align-items:center; gap:0.5rem;">
+                        <span>📍 Interactive City Map</span>
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">(OpenStreetMap + Leaflet)</span>
+                    </div>
+                    <div class="map-controls-inline">
+                        <button class="layer-toggle-btn active" data-layer="route">🛣️ Route</button>
+                        <button class="layer-toggle-btn active" data-layer="traffic">🚦 Traffic</button>
+                        <button class="layer-toggle-btn active" data-layer="buses">🚌 Buses</button>
+                        <button class="layer-toggle-btn active" data-layer="parking">🅿️ Parking</button>
+                        <button class="layer-toggle-btn active" data-layer="pollution">🌫️ AQI</button>
+                        <button class="layer-toggle-btn active" data-layer="incidents">⚠️ Incidents</button>
+                    </div>
+                </div>
+
+                <!-- Leaflet Map Container -->
+                <div id="map"></div>
+            </section>
+        </div>
+
+        <!-- Route Recommendation Results Container -->
+        <section id="route-results-container" class="results-section">
+            <!-- Dynamically populated by route.js with winning recommendation & comparison matrix -->
+        </section>
+
+    </main>
+
+    <!-- Incident Reporting Modal -->
+    <div id="incident-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-title">⚠️ Report Traffic Incident</div>
+                <button id="btn-close-incident-modal" class="btn-close">&times;</button>
+            </div>
+            <form id="incident-report-form">
+                <div class="form-group">
+                    <label class="form-label">Incident Type</label>
+                    <select id="inc-type" class="form-select">
+                        <option value="Accident">Accident</option>
+                        <option value="Traffic Signal Failure">Traffic Signal Failure</option>
+                        <option value="Road Damage / Pothole">Road Damage / Pothole</option>
+                        <option value="Vehicle Breakdown">Vehicle Breakdown</option>
+                        <option value="Road Construction">Road Construction</option>
+                        <option value="Severe Traffic Congestion">Severe Traffic Congestion</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Location / Road Name</label>
+                    <input type="text" id="inc-location" class="form-control" placeholder="e.g. OMR Sholinganallur Junction" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea id="inc-desc" class="form-control" rows="3" placeholder="Brief details about the obstruction or delay..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Severity Level</label>
+                    <select id="inc-severity" class="form-select">
+                        <option value="Low">Low - Minor Slowdown</option>
+                        <option value="Medium" selected>Medium - Significant Delay</option>
+                        <option value="High">High - Complete Blockage</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+                    📢 Broadcast Report
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>🚦 Smart Transportation Ecosystem • Powered by Leaflet.js, OpenStreetMap, Flask & Scikit-learn</p>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!-- Application Scripts -->
+    <script src="js/map.js"></script>
+    <script src="js/traffic.js"></script>
+    <script src="js/transport.js"></script>
+    <script src="js/parking.js"></script>
+    <script src="js/pollution.js"></script>
+    <script src="js/route.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

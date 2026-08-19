@@ -1,0 +1,11 @@
+id,road,congestion,avg_speed_kmh,status,start_lat,start_lng,end_lat,end_lng,length_km
+1,OMR (IT Corridor),82,22,Severe,12.9830,80.2594,12.8390,80.2220,18.5
+2,GST Road (Airport Corridor),61,35,High,12.9249,80.1000,13.0067,80.2025,14.2
+3,ECR (East Coast Road),35,48,Moderate,12.9830,80.2594,12.8250,80.2450,21.0
+4,Mount Road (Anna Salai),74,28,High,13.0827,80.2707,13.0067,80.2025,12.8
+5,Inner Ring Road (100 Ft Rd),55,38,Moderate,13.0067,80.2025,13.0694,80.1948,9.5
+6,Vandalur-Kelambakkam Road,42,45,Moderate,12.8900,80.0800,12.7850,80.2200,16.0
+7,Velachery Main Road,68,30,High,12.9249,80.1000,12.9756,80.2207,11.3
+8,Poonamallee High Road,84,20,Severe,13.0827,80.2707,13.0489,80.1040,15.6
+9,Rajiv Gandhi Salai,65,32,High,12.9600,80.2450,12.8900,80.2300,10.2
+10,Pallavaram-Thoraipakkam Radial Rd,48,42,Moderate,12.9500,80.1450,12.9400,80.2300,10.8

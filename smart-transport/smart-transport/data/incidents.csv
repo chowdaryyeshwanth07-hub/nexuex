@@ -1,0 +1,6 @@
+id,type,road_name,description,severity,status,latitude,longitude,reported_time
+1,Accident,OMR Sholinganallur,Two vehicles collision blocking left lane near toll plaza,High,Active,12.9030,80.2280,2026-08-19 09:45
+2,Traffic Signal Failure,GST Road - Airport Signal,Signal flashing amber causing junction bottleneck,Medium,In Progress,12.9930,80.1700,2026-08-19 10:05
+3,Road Construction,Mount Road Nandanam,Metro phase-2 barricading reducing carriageway to 2 lanes,High,Active,13.0310,80.2340,2026-08-19 08:30
+4,Vehicle Breakdown,Velachery Main Road,Heavy truck tire blowout near bypass flyover,Medium,Active,12.9740,80.2190,2026-08-19 10:15
+5,Waterlogging / Damage,Inner Ring Road Guindy,Pothole patch repair on flyover ramp,Low,Resolved,13.0080,80.2010,2026-08-19 07:30

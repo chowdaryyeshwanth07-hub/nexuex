@@ -1,0 +1,11 @@
+id,name,area,total_spots,available_spots,price_per_hour,has_ev_charging,latitude,longitude
+1,Phoenix Marketcity MLCP,Velachery,500,84,50,true,12.9915,80.2170
+2,Airport Multi-Level Parking (MLCP),Chennai Airport,1200,245,60,true,12.9928,80.1685
+3,OMR Tech Park Smart Parking,Sholinganallur,350,28,40,true,12.9020,80.2285
+4,Tambaram Station South Parking,Tambaram,200,18,20,false,12.9255,80.1012
+5,Guindy Metro Park & Ride,Guindy,180,32,30,true,13.0075,80.2030
+6,Express Avenue Parking,Mount Road,600,115,50,true,13.0588,80.2642
+7,Koyambedu CMBT Parking,Koyambedu,400,92,25,false,13.0685,80.1930
+8,Thiruvanmiyur ECR Lot,Thiruvanmiyur,150,47,30,false,12.9840,80.2580
+9,VIT Chennai Visitor Parking Hub,Vandalur,250,140,15,true,12.8415,80.1540
+10,Pallavaram Radial Parking,Pallavaram,120,65,25,false,12.9510,80.1470

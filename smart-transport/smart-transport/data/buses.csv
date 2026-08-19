@@ -1,0 +1,11 @@
+id,bus_number,route_name,destination,eta_mins,occupancy_percent,status,current_lat,current_lng,fare_inr
+1,21G,Broadway - Tambaram,Tambaram,8,72,Moderately Crowded,12.9450,80.1250,25
+2,570,CMBT - Kelambakkam,Kelambakkam (via VIT),5,85,Heavily Crowded,12.8600,80.1650,35
+3,19B,T. Nagar - Kelambakkam,Kelambakkam,12,60,Seats Available,12.8800,80.2200,30
+4,91,Tambaram - Thiruvanmiyur,Thiruvanmiyur,7,78,Moderately Crowded,12.9600,80.1800,28
+5,M1,Thiruvanmiyur - Kelambakkam,Kelambakkam,15,45,Seats Available,12.8350,80.2250,22
+6,70V,Koyambedu - Vandalur,Vandalur Zoo,9,68,Moderately Crowded,12.9100,80.1100,32
+7,51A,Tambaram - Velachery,Velachery,6,52,Seats Available,12.9400,80.1600,20
+8,221H,Central - Mahabalipuram,Mahabalipuram,18,88,Heavily Crowded,12.9200,80.2400,45
+9,570S,Guindy - Siruseri SIPCOT,Siruseri,4,90,Heavily Crowded,12.8550,80.2100,30
+10,Airport Feeder,Airport - Tambaram,Chennai Airport,3,38,Seats Available,12.9800,80.1650,20

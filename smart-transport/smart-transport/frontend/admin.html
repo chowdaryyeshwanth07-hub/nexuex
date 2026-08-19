@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin & Operations Center | Smart Transportation Ecosystem</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Application Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo-icon">👨‍💼</span>
+            <span>Smart Transport</span>
+            <span class="nav-tagline">Admin & Operations Command</span>
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-link">Commuter Hub</a>
+            <a href="/admin.html" class="nav-link active">Admin Dashboard</a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="main-container">
+
+        <!-- Operations Summary KPI Grid -->
+        <section class="stats-banner">
+            <div class="stat-card">
+                <div class="stat-icon-wrap" style="color: #3b82f6;">🚌</div>
+                <div class="stat-content">
+                    <div class="stat-label">Active Transit Fleet</div>
+                    <div class="stat-value" id="adm-active-buses">--</div>
+                    <span class="stat-badge badge-good">MTC Buses Online</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon-wrap" style="color: #ef4444;">🚨</div>
+                <div class="stat-content">
+                    <div class="stat-label">Active Incidents</div>
+                    <div class="stat-value" id="adm-incidents">--</div>
+                    <span class="stat-badge badge-severe">Requiring Action</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon-wrap" style="color: #06b6d4;">🅿️</div>
+                <div class="stat-content">
+                    <div class="stat-label">Parking Available</div>
+                    <div class="stat-value" id="adm-parking-avail">--%</div>
+                    <span class="stat-badge badge-good">City Hubs</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon-wrap" style="color: #f59e0b;">🌫️</div>
+                <div class="stat-content">
+                    <div class="stat-label">Average AQI</div>
+                    <div class="stat-value" id="adm-avg-aqi">--</div>
+                    <span class="stat-badge badge-moderate">Air Quality</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon-wrap" style="color: #10b981;">🌱</div>
+                <div class="stat-content">
+                    <div class="stat-label">CO₂ Offset Today</div>
+                    <div class="stat-value" id="adm-co2-saved">--</div>
+                    <span class="stat-badge badge-good">Clean Transit</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon-wrap" style="color: #8b5cf6;">👥</div>
+                <div class="stat-content">
+                    <div class="stat-label">Active Commuters</div>
+                    <div class="stat-value" id="adm-active-users">--</div>
+                    <span class="stat-badge badge-good">Platform Users</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Charts Grid -->
+        <section class="admin-charts-grid">
+            
+            <!-- Road Congestion Bar Chart -->
+            <div class="chart-card">
+                <div class="chart-title">
+                    <span>🚦 Arterial Road Congestion Levels</span>
+                    <span style="font-size:0.75rem; color:var(--text-muted);">Real-time Telemetry</span>
+                </div>
+                <div style="position: relative; height: 260px;">
+                    <canvas id="chart-traffic"></canvas>
+                </div>
+            </div>
+
+            <!-- 24-Hour Traffic Trend vs AI Model Prediction -->
+            <div class="chart-card">
+                <div class="chart-title">
+                    <span>🧠 Congestion Trend vs AI Forecast</span>
+                    <span style="font-size:0.75rem; color:#34d399;">RandomForest Model</span>
+                </div>
+                <div style="position: relative; height: 260px;">
+                    <canvas id="chart-trend"></canvas>
+                </div>
+            </div>
+
+            <!-- Air Quality Across Stations -->
+            <div class="chart-card">
+                <div class="chart-title">
+                    <span>🌫️ Air Quality Index (AQI) Across Stations</span>
+                    <span style="font-size:0.75rem; color:var(--text-muted);">CPCB Sensor Feed</span>
+                </div>
+                <div style="position: relative; height: 260px;">
+                    <canvas id="chart-aqi"></canvas>
+                </div>
+            </div>
+
+            <!-- Incident Breakdown & Modal Share -->
+            <div class="chart-card">
+                <div class="chart-title">
+                    <span>⚠️ Incident Classification & Transit Split</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; height: 260px;">
+                    <div style="position: relative; height: 100%;">
+                        <canvas id="chart-incidents"></canvas>
+                    </div>
+                    <div style="position: relative; height: 100%;">
+                        <canvas id="chart-modal"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Interactive Control & Simulation Hub -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+            
+            <!-- Traffic Congestion Simulator -->
+            <div class="planner-panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <span>🎛️</span>
+                        <span>Traffic Load Simulator</span>
+                    </div>
+                    <span style="font-size:0.75rem; color:var(--text-secondary);">Manual Override</span>
+                </div>
+                <form id="traffic-simulator-form">
+                    <div class="form-group">
+                        <label class="form-label">Select Target Roadway</label>
+                        <select id="sim-road-select" class="form-select">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+                            <label class="form-label">Simulated Congestion Level</label>
+                            <span id="sim-slider-val" style="font-weight: 700; color: #38bdf8;">65%</span>
+                        </div>
+                        <input type="range" id="sim-congestion-slider" min="0" max="100" value="65" style="width:100%; accent-color: var(--accent-blue);">
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                        ⚡ Apply Simulation Override
+                    </button>
+                </form>
+            </div>
+
+            <!-- AI Traffic Prediction Test Bed -->
+            <div class="planner-panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <span>🤖</span>
+                        <span>AI Congestion Predictor</span>
+                    </div>
+                    <span style="font-size:0.75rem; color:#a78bfa;">ML Inference</span>
+                </div>
+                <form id="ai-predict-form">
+                    <div class="form-group">
+                        <label class="form-label">Road Corridor</label>
+                        <select id="ai-road-select" class="form-select">
+                            <option value="OMR (IT Corridor)">OMR (IT Corridor)</option>
+                            <option value="GST Road (Airport Corridor)">GST Road (Airport Corridor)</option>
+                            <option value="Mount Road (Anna Salai)">Mount Road (Anna Salai)</option>
+                            <option value="Poonamallee High Road">Poonamallee High Road</option>
+                            <option value="Velachery Main Road">Velachery Main Road</option>
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <div class="form-group">
+                            <label class="form-label">Hour of Day (0-23)</label>
+                            <input type="number" id="ai-hour-input" class="form-control" min="0" max="23" value="18">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Weather Condition</label>
+                            <select id="ai-weather-select" class="form-select">
+                                <option value="Clear">Clear</option>
+                                <option value="Rainy">Rainy</option>
+                                <option value="Cloudy">Cloudy</option>
+                                <option value="Foggy">Foggy</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-secondary" style="width: 100%; justify-content: center; font-weight:700;">
+                        🔮 Predict Traffic Congestion
+                    </button>
+                </form>
+
+                <div id="ai-result-box" style="display:none; margin-top: 1rem; padding: 0.85rem; background: rgba(15,23,42,0.8); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                    <!-- Injected by charts.js -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Live Reported Incidents Management Table -->
+        <section class="planner-panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <span>📋</span>
+                    <span>Live Incidents & Dispatch Management</span>
+                </div>
+                <span style="font-size:0.75rem; color:var(--text-muted);">Crowdsourced Alerts</span>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Category</th>
+                            <th>Location</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-incidents-tbody">
+                        <!-- Populated by charts.js -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>👨‍💼 Smart Transportation Operations Hub • Admin Console v1.0.0</p>
+    </footer>
+
+    <!-- Application Admin Scripts -->
+    <script src="js/charts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initAdminDashboard();
+        });
+    </script>
+</body>
+</html>
